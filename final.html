@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dream Team</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <!-- TODO: add content and images -->
+    <!-- Font Awesome for icons -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+    <meta name="description" content="Build your fantasy cricket team with the best players with the help of data.">
+    <meta name="keywords" content="fantasy cricket, cricket team, players, sports, fantasy sports, dream11, mycircle11, team11">
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://example.com/">
+    <meta property="og:title" content="Fantasy Cricket Team">
+    <meta property="og:description" content="Build your fantasy cricket team with the best players with the help of data.">
+    <meta property="og:image" content="https://example.com/image.jpg">
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://example.com/">
+    <meta property="twitter:title" content="Fantasy Cricket Team">
+    <meta property="twitter:description" content="Build your fantasy cricket team with the best players with the help of data.">
+    <meta property="twitter:image" content="https://example.com/image.jpg">
+    <!-- Robots -->
+    <meta name="robots" content="index, follow">
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://example.com/">
+    <style>
+        @keyframes fadeInUp {
+            0% {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .fadeInUp {
+            animation: fadeInUp 0.5s ease-out;
+        }
+
+        html,
+        body {
+            height: 100%;
+        }
+
+        body {
+            display: flex;
+            flex-direction: column;
+        }
+
+        main {
+            flex: 1;
+        }
+
+        .player-card {
+            transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+        }
+
+        .player-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        #githubIcon {
+            font-size: 24px;
+            cursor: pointer;
+        }
+
+        footer {
+            position: sticky;
+            bottom: 0;
+        }
+    </style>
+</head>
+
+<body class="bg-gray-100 text-gray-900">
+    <header class="bg-blue-600 text-white py-4">
+        <div class="container mx-auto px-4 flex justify-between items-center">
+            <h1 class="text-2xl font-bold">Dream Team</h1>
+            <a href="https://github.com/your-username/your-repository" target="_blank" rel="noopener noreferrer" id="githubIcon">
+                <i class="fab fa-github"></i>
+            </a>
+        </div>
+    </header>
+
+    <main class="container mx-auto px-4 py-8" id="playerContainer">
+        <h2 class="text-xl font-semibold mb-4" id="fixtureTitle"></h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4" id="playersGrid">
+            <!-- Players will be added dynamically here -->
+        </div>
+    </main>
+
+    <footer class="bg-blue-600 text-white py-4">
+        <div class="container mx-auto px-4 text-center">
+            <p>Made with &hearts; by Dikshant Rajput <br/> The team is purely data driven and is supposed to change. Team is subjected to update after toss.</p>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            fetch('f.json')
+                .then(response => response.json())
+                .then(data => {
+                    // Display Fixture
+                    const fixtureTitle = document.getElementById('fixtureTitle');
+                    fixtureTitle.textContent = data.fixture;
+
+                    const playerContainer = document.getElementById('playersGrid');
+
+                    // Add Captain
+                    // playerContainer.innerHTML += `
+                    //     <div class="bg-white p-4 rounded-lg shadow-md player-card bg-green-100">
+                    //         <h3 class="text-lg font-semibold mb-2">Captain: ${data.captain}</h3>
+                    //         <p class="text-sm text-gray-500 mt-2">Role: ${data.players.find(player => player.name.includes(data.captain)).role}</p>
+                    //         <p class="text-sm text-gray-500">Reason: ${data.players.find(player => player.name.includes(data.captain)).reason}</p>
+                    //     </div>
+                    // `;
+
+                    // // Add Vice Captain
+                    // playerContainer.innerHTML += `
+                    //     <div class="bg-white p-4 rounded-lg shadow-md player-card bg-green-100">
+                    //         <h3 class="text-lg font-semibold mb-2">Vice captain: ${data.vice_captain}</h3>
+                    //         <p class="text-sm text-gray-500 mt-2">Role: ${data.players.find(player => player.name.includes(data.vice_captain)).role}</p>
+                    //         <p class="text-sm text-gray-500">Reason: ${data.players.find(player => player.name.includes(data.vice_captain) ).reason}</p>
+                    //     </div>
+                    // `;
+
+                    // Add Other Players
+                    data.players.forEach(player => {
+                            playerContainer.innerHTML += `
+                                <div class="bg-white p-4 rounded-lg shadow-md player-card ${(player.name.includes(data.captain) || player.name.includes(data.vice_captain) ) ? "bg-green-100" : ""}">
+                                    <h3 class="text-lg font-semibold mb-2">${player.name}${player.name.includes(data.captain) ? "(Captain)" : ""} ${player.name.includes(data.vice_captain) ? "(Vice Captain)" : ""}</h3>
+                                    <p class="text-sm text-gray-500 mt-2">Team: ${player.team}</p>
+                                    <p class="text-sm text-gray-500">Role: ${player.role}</p>
+                                    <p class="text-sm text-gray-500">Reason: ${player.reason}</p>
+                                </div>
+                            `;
+                    });
+                })
+                .catch(error => console.error('Error fetching data:', error));
+        });
+    </script>
+</body>
+
+</html>

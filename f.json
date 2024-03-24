@@ -1,0 +1,20 @@
+{
+    "fixture": "GT vs MI",
+    "players": [
+      { "name": "Rohit Sharma", "reason": "Proven batsman with good record against GT", "team": "MI", "role": "Batsman" },
+      { "name": "Shubman Gill", "reason": "In good form and opening batsman for GT", "team": "GT", "role": "Batsman" },
+      { "name": "Ishan Kishan", "reason": "Wicket-keeper batsman for MI", "team": "MI", "role": "Wicketkeeper-batsman" },
+      { "name": "Wriddhiman Saha", "reason": "Wicket-keeper batsman for GT", "team": "GT", "role": "Wicketkeeper-batsman" },
+      { "name": "David Miller", "reason": "Big hitter and finisher for GT", "team": "GT", "role": "Batsman" },
+      { "name": "Hardik Pandya", "reason": "All-rounder with good batting and bowling record", "team": "MI", "role": "All-rounder" },
+      { "name": "Rashid Khan", "reason": "Proven wicket-taker for GT", "team": "GT", "role": "Bowler" },
+      { "name": "Jasprit Bumrah", "reason": "Proven fast bowler for MI", "team": "MI", "role": "Bowler" },
+      { "name": "Umesh Yadav", "reason": "Experienced fast bowler for GT", "team": "GT", "role": "Bowler" },
+      { "name": "Piyush Chawla", "reason": "Experienced spinner for MI", "team": "MI", "role": "Bowler" },
+      { "name": "N. Tilak Varma", "reason": "Young batsman in form for MI", "team": "MI", "role": "Batsman"  },
+      { "name": "Sai Kishore", "reason": "Left-arm spinner for GT", "team": "GT", "role": "Bowler" }
+    ],
+    "captain": "Rohit Sharma",
+    "vice_captain": "Rashid Khan"
+  }
+  
