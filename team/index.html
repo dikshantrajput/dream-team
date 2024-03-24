@@ -98,13 +98,23 @@
 
     <footer class="bg-blue-600 text-white py-4">
         <div class="container mx-auto px-4 text-center">
-            <p>Made with &hearts; by Dikshant Rajput <br/> The team is purely data driven and is supposed to change. Team is subjected to update after toss.</p>
+            <p>Made with &hearts; by Dikshant Rajput <br/> The team is purely data driven(till IPL 2023). Team is subjected to update after toss.</p>
         </div>
     </footer>
 
     <script>
+        function getParameterFromURL(parameterName) {
+            const urlParams = new URLSearchParams(window.location.search);
+            return urlParams.get(parameterName);
+        }
         document.addEventListener("DOMContentLoaded", function () {
-            fetch('../f.json')
+            const matchId = getParameterFromURL("matchId")
+            if(! matchId){
+                alert("Invalid match")
+                return
+            }
+
+            fetch(`${matchId}.json`)
                 .then(response => response.json())
                 .then(data => {
                     // Display Fixture
@@ -113,25 +123,6 @@
 
                     const playerContainer = document.getElementById('playersGrid');
 
-                    // Add Captain
-                    // playerContainer.innerHTML += `
-                    //     <div class="bg-white p-4 rounded-lg shadow-md player-card bg-green-100">
-                    //         <h3 class="text-lg font-semibold mb-2">Captain: ${data.captain}</h3>
-                    //         <p class="text-sm text-gray-500 mt-2">Role: ${data.players.find(player => player.name.includes(data.captain)).role}</p>
-                    //         <p class="text-sm text-gray-500">Reason: ${data.players.find(player => player.name.includes(data.captain)).reason}</p>
-                    //     </div>
-                    // `;
-
-                    // // Add Vice Captain
-                    // playerContainer.innerHTML += `
-                    //     <div class="bg-white p-4 rounded-lg shadow-md player-card bg-green-100">
-                    //         <h3 class="text-lg font-semibold mb-2">Vice captain: ${data.vice_captain}</h3>
-                    //         <p class="text-sm text-gray-500 mt-2">Role: ${data.players.find(player => player.name.includes(data.vice_captain)).role}</p>
-                    //         <p class="text-sm text-gray-500">Reason: ${data.players.find(player => player.name.includes(data.vice_captain) ).reason}</p>
-                    //     </div>
-                    // `;
-
-                    // Add Other Players
                     data.players.forEach(player => {
                             playerContainer.innerHTML += `
                                 <div class="bg-white p-4 rounded-lg shadow-md player-card ${(player.name.includes(data.captain) || player.name.includes(data.vice_captain) ) ? "bg-green-100" : ""}">
@@ -143,7 +134,7 @@
                             `;
                     });
                 })
-                .catch(error => console.error('Error fetching data:', error));
+                .catch(error => {if(confirm("Dream Team not created yet. Working on it. check again later. Would You like to fixtures again?")) window.location.href='/matches'});
         });
     </script>
 </body>
