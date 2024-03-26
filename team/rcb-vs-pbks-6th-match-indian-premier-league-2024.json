@@ -1,0 +1,85 @@
+{
+  "fixture": "Royal Challengers Bangalore vs Punjab Kings",
+  "players": [
+    {
+      "name": "Faf du Plessis",
+      "reason": "Experienced opener and consistent run-scorer",
+      "team": "Royal Challengers Bangalore",
+      "role": "Batsman"
+    },
+    {
+      "name": "Virat Kohli",
+      "reason": "World-class batsman with a proven track record in IPL",
+      "team": "Royal Challengers Bangalore",
+      "role": "Batsman"
+    },
+    {
+      "name": "Glenn Maxwell",
+      "reason": "Explosive all-rounder with the ability to change the game",
+      "team": "Royal Challengers Bangalore",
+      "role": "All-rounder"
+    },
+    {
+      "name": "Shikhar Dhawan",
+      "reason": "Experienced opener and consistent run-scorer",
+      "team": "Punjab Kings",
+      "role": "Batsman"
+    },
+    {
+      "name": "Sam Curran",
+      "reason": "High-impact all-rounder with both bat and ball",
+      "team": "Punjab Kings",
+      "role": "All-rounder"
+    },
+    {
+      "name": "Kagiso Rabada",
+      "reason": "World-class bowler with the ability to take wickets and keep runs down",
+      "team": "Punjab Kings",
+      "role": "Bowler"
+    },
+    {
+      "name": "Mohammed Siraj",
+      "reason": "Consistent and experienced pace bowler",
+      "team": "Royal Challengers Bangalore",
+      "role": "Bowler"
+    },
+    {
+      "name": "Dinesh Karthik",
+      "reason": "Experienced finisher and wicket-keeper batsman",
+      "team": "Royal Challengers Bangalore",
+      "role": "Batsman"
+    },
+    {
+      "name": "Liam Livingstone",
+      "reason": "Hard-hitting batsman and useful spin-bowling option",
+      "team": "Punjab Kings",
+      "role": "All-rounder"
+    },
+    {
+      "name": "Alzarri Joseph",
+      "reason": "Promising young pace bowler with wicket-taking ability",
+      "team": "Royal Challengers Bangalore",
+      "role": "Bowler"
+    },
+    {
+      "name": "Arshdeep Singh",
+      "reason": "Consistent and economical left-arm pace bowler",
+      "team": "Punjab Kings",
+      "role": "Bowler"
+    },
+    {
+      "name": "Cameron Green",
+      "reason": "Talented all-rounder with the potential to be a match-winner",
+      "team": "Royal Challengers Bangalore",
+      "role": "All-rounder"
+    },
+    {
+      "name": "Rahul Chahar",
+      "reason": "Experienced leg-spinner with wicket-taking ability",
+      "team": "Punjab Kings",
+      "role": "Bowler"
+    }
+  ],
+  "captain": "Faf du Plessis",
+  "vice_captain": "Sam Curran"
+}

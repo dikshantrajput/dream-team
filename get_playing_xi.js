@@ -1,7 +1,9 @@
 const axios = require('axios');
 const cheerio = require('cheerio');
+const fs = require('fs').promises;
 
-const url = 'https://www.espncricinfo.com/series/indian-premier-league-2024-1410320/gujarat-titans-vs-mumbai-indians-5th-match-1422123/match-playing-xi';
+// const url = 'https://www.espncricinfo.com/series/indian-premier-league-2024-1410320/gujarat-titans-vs-mumbai-indians-5th-match-1422123/match-playing-xi';
+const url = process.argv[2];
 
 // Get the path part of the URL
 const u = url.split('/')
@@ -14,13 +16,12 @@ const [leftText, rightText] = path.split('-vs-');
 // Extract only the substring before the number on the right side
 const rightSideBeforeNumber = rightText.match(/^(.*?)(?=\d)/)[0];
 
-const oddTeam = leftText.replace(/-/g, ' ')
-const evenTeam = rightSideBeforeNumber.replace(/-/g, ' ');
-
+const evenTeam = leftText.replace(/-/g, ' ')
+const oddTeam = rightSideBeforeNumber.replace(/-/g, ' ');
 
 // Make a GET request to fetch the HTML content
 axios.get(url)
-  .then(response => {
+  .then(async response => {
     // Load the HTML content into Cheerio
     const $ = cheerio.load(response.data);
 
@@ -39,8 +40,18 @@ axios.get(url)
     const evenIndexPlayers = playerNames.filter((_, index) => index % 2 === 0);
     const oddIndexPlayers = playerNames.filter((_, index) => index % 2 !== 0);
 
-    console.log("Even Index Players:", evenIndexPlayers);
-    console.log("Odd Index Players:", oddIndexPlayers);
+    const result = {
+    }
+    if((evenIndexPlayers.length == 11) && (oddIndexPlayers.length == 11)){
+      result[evenTeam] = evenIndexPlayers
+      result[oddTeam] = oddIndexPlayers
+
+      console.log(result);
+      const fileName = `${path}.json`;
+      await fs.writeFile(fileName, JSON.stringify(result, null, 2));
+      console.log(`Playing xi saved`);
+    }
+
   })
   .catch(error => {
     console.error('Error fetching the page:', error);
