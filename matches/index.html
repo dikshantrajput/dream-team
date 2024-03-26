@@ -55,7 +55,7 @@
                                             <p class="text-gray-600">Venue: ${fixture.venue}</p>
                                             <p class="text-gray-600">Start Time: ${fixture.startTime}</p>
                                         </div>
-                                        <button class="dream-team-btn bg-blue-500 text-white px-4 py-2 rounded-md">Dream Team</button>`;
+                                        <button class="dream-team-btn bg-blue-500 text-white px-4 py-2 rounded-md" data-fixtureId="${fixture.id}">Dream Team</button>`;
                     fixturesList.appendChild(listItem);
                 });
             })
@@ -64,7 +64,7 @@
         // Event delegation for dynamic elements
         document.addEventListener('click', function(event) {
             if (event.target.classList.contains('dream-team-btn')) {
-                const fixtureId = event.target.dataset.fixtureId;
+                const fixtureId = event.target.dataset.fixtureid;
                 redirectToDreamTeam(fixtureId);
             }
         });
