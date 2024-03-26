@@ -31,15 +31,15 @@
     </footer>
     <script type="module">
         import * as vercelanalytics from 'https://esm.run/@vercel/analytics';
-
+    
         vercelanalytics.inject()
-
+    
         // Function to handle button click
         function redirectToDreamTeam(fixtureId) {
             // Redirect to the dream team page with the fixtureId as a query parameter
             window.location.href = '/team/?matchId=' + encodeURIComponent(fixtureId);
         }
-
+    
         // Fixture data
         fetch('match_fixtures.json')
             .then(response => response.json())
@@ -55,12 +55,21 @@
                                             <p class="text-gray-600">Venue: ${fixture.venue}</p>
                                             <p class="text-gray-600">Start Time: ${fixture.startTime}</p>
                                         </div>
-                                        <button onclick="redirectToDreamTeam('${fixture.id}')" class="bg-blue-500 text-white px-4 py-2 rounded-md">Dream Team</button>`;
+                                        <button class="dream-team-btn bg-blue-500 text-white px-4 py-2 rounded-md">Dream Team</button>`;
                     fixturesList.appendChild(listItem);
                 });
             })
             .catch(error => console.error('Error fetching data:', error));
+    
+        // Event delegation for dynamic elements
+        document.addEventListener('click', function(event) {
+            if (event.target.classList.contains('dream-team-btn')) {
+                const fixtureId = event.target.dataset.fixtureId;
+                redirectToDreamTeam(fixtureId);
+            }
+        });
     </script>
+    
 </body>
 
 </html>
