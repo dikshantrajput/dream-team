@@ -9,6 +9,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@vercel/analytics": "^1.2.2",
     "axios": "^1.6.8",
     "cheerio": "^1.0.0-rc.12",
     "puppeteer": "^22.6.0"

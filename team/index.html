@@ -103,7 +103,11 @@
         </div>
     </footer>
 
-    <script>
+    <script type="module">
+        import * as vercelanalytics from 'https://esm.run/@vercel/analytics';
+
+        vercelanalytics.inject()
+        
         function getParameterFromURL(parameterName) {
             const urlParams = new URLSearchParams(window.location.search);
             return urlParams.get(parameterName);

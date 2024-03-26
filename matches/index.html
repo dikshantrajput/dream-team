@@ -29,8 +29,11 @@
                 subjected to update after toss.</p>
         </div>
     </footer>
+    <script type="module">
+        import * as vercelanalytics from 'https://esm.run/@vercel/analytics';
 
-    <script>
+        vercelanalytics.inject()
+
         // Function to handle button click
         function redirectToDreamTeam(fixtureId) {
             // Redirect to the dream team page with the fixtureId as a query parameter
